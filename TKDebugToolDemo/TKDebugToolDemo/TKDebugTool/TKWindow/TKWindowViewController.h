@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "TKWindow.h"
 @interface TKWindowViewController : UIViewController
-@property (nonatomic, strong) TKWindow *window;
+@property (nonatomic, weak) TKWindow *window;
 @end
