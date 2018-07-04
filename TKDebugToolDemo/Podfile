@@ -7,4 +7,5 @@ target 'TKDebugToolDemo' do
 
   # Pods for TKDebugToolDemo
   pod "Masonry"
+  pod "FLEX"
 end

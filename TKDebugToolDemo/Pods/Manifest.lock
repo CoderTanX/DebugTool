@@ -1,16 +1,20 @@
 PODS:
+  - FLEX (2.4.0)
   - Masonry (1.1.0)
 
 DEPENDENCIES:
+  - FLEX
   - Masonry
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - FLEX
     - Masonry
 
 SPEC CHECKSUMS:
+  FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: 2c3b0e37332ee8b117f18fdd5c21b56bef12f0b8
+PODFILE CHECKSUM: bd0117b80e1fcb39036138361d199768ab74a083
 
 COCOAPODS: 1.5.0

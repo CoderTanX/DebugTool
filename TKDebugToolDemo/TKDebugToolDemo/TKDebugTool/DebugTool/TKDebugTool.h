@@ -11,6 +11,8 @@
 @interface TKDebugTool : NSObject
 //单例
 TK_SINGLETON_DEF(TKDebugTool)
+////是否已经开始
+@property(nonatomic, assign, readonly, getter=isMonitor) BOOL monitor;
 
 - (void)start;
 

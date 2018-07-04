@@ -45,5 +45,8 @@ dispatch_async(queue, block);\
 #define TK_kscreenW [UIScreen mainScreen].bounds.size.width
 #define TK_kscreenH [UIScreen mainScreen].bounds.size.height
 
+#define BALLW 70
+#define BallCenterDistance 130
+#define ExpandButtonW 50
 
 #endif

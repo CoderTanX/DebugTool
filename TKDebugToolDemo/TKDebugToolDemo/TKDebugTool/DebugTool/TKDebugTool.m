@@ -18,10 +18,15 @@
 TK_SINGLETON_IMP(TKDebugTool)
 
 - (void)start{
-    TKDebugTool.sharedInstance.window = [[TKWindow alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    TKDebugTool.sharedInstance.window = [[TKWindow alloc] initWithFrame:CGRectMake(100, 300, BALLW, BALLW)];
 }
+
 - (void)stop{
     self.window = nil;
+}
+
+- (BOOL)isMonitor{
+    return self.window != nil;
 }
 
 
