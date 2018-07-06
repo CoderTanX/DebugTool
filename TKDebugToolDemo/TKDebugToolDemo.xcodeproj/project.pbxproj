@@ -10,6 +10,7 @@
 		444BF63E20EA40EA004DBFA0 /* TKProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 444BF63D20EA40EA004DBFA0 /* TKProxy.m */; };
 		444BF64120EB0B54004DBFA0 /* TKTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 444BF64020EB0B54004DBFA0 /* TKTimer.m */; };
 		444BF64F20EB5FC3004DBFA0 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 444BF64D20EB5FC2004DBFA0 /* UIWindow+Extension.m */; };
+		444BF67220EC9716004DBFA0 /* TKDTDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444BF67120EC9716004DBFA0 /* TKDTDeviceViewController.m */; };
 		44D80BCE20E5C8AF00AC681B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D80BCD20E5C8AF00AC681B /* AppDelegate.m */; };
 		44D80BD120E5C8AF00AC681B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D80BD020E5C8AF00AC681B /* ViewController.m */; };
 		44D80BD420E5C8AF00AC681B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D80BD220E5C8AF00AC681B /* Main.storyboard */; };
@@ -30,6 +31,8 @@
 		444BF64020EB0B54004DBFA0 /* TKTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTimer.m; sourceTree = "<group>"; };
 		444BF64D20EB5FC2004DBFA0 /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
 		444BF64E20EB5FC2004DBFA0 /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
+		444BF67020EC9716004DBFA0 /* TKDTDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDTDeviceViewController.h; sourceTree = "<group>"; };
+		444BF67120EC9716004DBFA0 /* TKDTDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKDTDeviceViewController.m; sourceTree = "<group>"; };
 		44D80BC920E5C8AF00AC681B /* TKDebugToolDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKDebugToolDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D80BCC20E5C8AF00AC681B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		44D80BCD20E5C8AF00AC681B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -86,6 +89,23 @@
 			path = TKDTCategory;
 			sourceTree = "<group>";
 		};
+		444BF66B20EC9637004DBFA0 /* TKDTUI */ = {
+			isa = PBXGroup;
+			children = (
+				444BF66C20EC96C8004DBFA0 /* Device */,
+			);
+			path = TKDTUI;
+			sourceTree = "<group>";
+		};
+		444BF66C20EC96C8004DBFA0 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				444BF67020EC9716004DBFA0 /* TKDTDeviceViewController.h */,
+				444BF67120EC9716004DBFA0 /* TKDTDeviceViewController.m */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
 		44D80BC020E5C8AF00AC681B = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +144,7 @@
 		44D80BE220E5C8B500AC681B /* TKDebugTool */ = {
 			isa = PBXGroup;
 			children = (
+				444BF66B20EC9637004DBFA0 /* TKDTUI */,
 				444BF65020EC6369004DBFA0 /* TKDTCategory */,
 				44D80BE320E5C90100AC681B /* DebugTool */,
 				44D80BE820E5CD6100AC681B /* TKDTWindow */,
@@ -256,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				444BF67220EC9716004DBFA0 /* TKDTDeviceViewController.m in Sources */,
 				44D80BE620E5C92E00AC681B /* TKDebugTool.m in Sources */,
 				444BF64F20EB5FC3004DBFA0 /* UIWindow+Extension.m in Sources */,
 				44D80BD120E5C8AF00AC681B /* ViewController.m in Sources */,

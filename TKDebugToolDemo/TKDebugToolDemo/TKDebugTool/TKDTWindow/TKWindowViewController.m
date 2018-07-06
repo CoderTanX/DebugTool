@@ -13,6 +13,8 @@
 #import <mach/mach.h>
 #import "TKTimer.h"
 #import "FLEX.h"
+#import "TKDTDeviceViewController.h"
+#import "UIWindow+Extension.h"
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 #define SubButtonsCount self.funcNames.count
 #define SubButtonMargin 8
@@ -149,7 +151,21 @@
     [self clickSBallView];
     if ([btn.titleLabel.text isEqualToString:@"FLEX"]) {
         [FLEXManager.sharedManager showExplorer];
+        return;
     }
+    
+    UIViewController *currentVc = [[UIApplication sharedApplication].keyWindow currentViewController];
+    if ([currentVc isMemberOfClass:[TKDTDeviceViewController class]]) {
+        return;
+    }
+    
+    UIViewController *topMostVc = [[UIApplication sharedApplication].keyWindow topMostWindowController];
+    if ([btn.titleLabel.text isEqualToString:@"Device"]){
+        TKDTDeviceViewController *deviceVc = [[TKDTDeviceViewController alloc] init];
+        UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:deviceVc];
+        [topMostVc presentViewController:navVc animated:YES completion:nil];
+    }
+    
 }
 
 

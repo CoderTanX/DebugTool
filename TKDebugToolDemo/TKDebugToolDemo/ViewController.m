@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog(@"%@", [[NSBundle mainBundle] infoDictionary]);
     
 }
 - (IBAction)bntClick {

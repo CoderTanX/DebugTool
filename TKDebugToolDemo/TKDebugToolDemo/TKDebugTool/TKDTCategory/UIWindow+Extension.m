@@ -19,4 +19,26 @@
     TKDebugTool.sharedInstance.isMonitor ? [TKDebugTool.sharedInstance stop] : [TKDebugTool.sharedInstance start];
 }
 
+- (UIViewController*)topMostWindowController
+{
+    UIViewController *topController = [self rootViewController];
+    
+    //  Getting topMost ViewController
+    while ([topController presentedViewController])    topController = [topController presentedViewController];
+    
+    //  Returning topMost ViewController
+    return topController;
+}
+
+- (UIViewController*)currentViewController;
+{
+    UIViewController *currentViewController = [self topMostWindowController];
+    
+    while ([currentViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController*)currentViewController topViewController])
+        currentViewController = [(UINavigationController*)currentViewController topViewController];
+    
+    return currentViewController;
+}
+
+
 @end
