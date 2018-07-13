@@ -8,6 +8,7 @@
 
 #import "TKDebugTool.h"
 #import "TKWindow.h"
+#import "TKCustomURLProtocol.h"
 
 @interface TKDebugTool()
 @property (nonatomic, strong)TKWindow *window;
@@ -19,14 +20,17 @@ TK_SINGLETON_IMP(TKDebugTool)
 
 - (void)start{
     TKDebugTool.sharedInstance.window = [[TKWindow alloc] initWithFrame:CGRectMake(100, 300, BALLW, BALLW)];
+    [NSURLProtocol registerClass:[TKCustomURLProtocol class]];
 }
 
 - (void)stop{
     self.window = nil;
+    [NSURLProtocol unregisterClass:[TKCustomURLProtocol class]];
 }
 
 - (BOOL)isMonitor{
     return self.window != nil;
+    
 }
 
 

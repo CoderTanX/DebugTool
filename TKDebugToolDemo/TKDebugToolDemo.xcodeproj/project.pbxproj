@@ -11,6 +11,16 @@
 		444BF64120EB0B54004DBFA0 /* TKTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 444BF64020EB0B54004DBFA0 /* TKTimer.m */; };
 		444BF64F20EB5FC3004DBFA0 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 444BF64D20EB5FC2004DBFA0 /* UIWindow+Extension.m */; };
 		444BF67220EC9716004DBFA0 /* TKDTDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444BF67120EC9716004DBFA0 /* TKDTDeviceViewController.m */; };
+		447519AE20F5C71F00B4F0E1 /* NSURLSessionConfiguration+TKExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 447519AB20F5C71D00B4F0E1 /* NSURLSessionConfiguration+TKExtention.m */; };
+		447519AF20F5C71F00B4F0E1 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 447519AC20F5C71E00B4F0E1 /* NSDate+Additions.m */; };
+		447519B220F5C72D00B4F0E1 /* TKCustomURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 447519B120F5C72D00B4F0E1 /* TKCustomURLProtocol.m */; };
+		447519B520F5C73C00B4F0E1 /* TKStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 447519B420F5C73C00B4F0E1 /* TKStorageManager.m */; };
+		447519BB20F5C76800B4F0E1 /* TKNetworkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 447519BA20F5C76800B4F0E1 /* TKNetworkModel.m */; };
+		447519BE20F5C8C900B4F0E1 /* TKNetwrokListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 447519BD20F5C8C900B4F0E1 /* TKNetwrokListViewController.m */; };
+		447519C220F5E68600B4F0E1 /* TKNetworkViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 447519C120F5E68600B4F0E1 /* TKNetworkViewCell.m */; };
+		447519C520F6043F00B4F0E1 /* TKNetworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 447519C420F6043F00B4F0E1 /* TKNetworkDetailViewController.m */; };
+		447519C820F6052700B4F0E1 /* TKNetworkDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 447519C720F6052700B4F0E1 /* TKNetworkDetailViewCell.m */; };
+		4479B49F20F884A700F6B4A1 /* TKNetworkDetailImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4479B49E20F884A700F6B4A1 /* TKNetworkDetailImageCell.m */; };
 		44D80BCE20E5C8AF00AC681B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D80BCD20E5C8AF00AC681B /* AppDelegate.m */; };
 		44D80BD120E5C8AF00AC681B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D80BD020E5C8AF00AC681B /* ViewController.m */; };
 		44D80BD420E5C8AF00AC681B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D80BD220E5C8AF00AC681B /* Main.storyboard */; };
@@ -33,6 +43,26 @@
 		444BF64E20EB5FC2004DBFA0 /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
 		444BF67020EC9716004DBFA0 /* TKDTDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDTDeviceViewController.h; sourceTree = "<group>"; };
 		444BF67120EC9716004DBFA0 /* TKDTDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKDTDeviceViewController.m; sourceTree = "<group>"; };
+		447519AA20F5C71D00B4F0E1 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
+		447519AB20F5C71D00B4F0E1 /* NSURLSessionConfiguration+TKExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionConfiguration+TKExtention.m"; sourceTree = "<group>"; };
+		447519AC20F5C71E00B4F0E1 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
+		447519AD20F5C71E00B4F0E1 /* NSURLSessionConfiguration+TKExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionConfiguration+TKExtention.h"; sourceTree = "<group>"; };
+		447519B020F5C72D00B4F0E1 /* TKCustomURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCustomURLProtocol.h; sourceTree = "<group>"; };
+		447519B120F5C72D00B4F0E1 /* TKCustomURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCustomURLProtocol.m; sourceTree = "<group>"; };
+		447519B320F5C73C00B4F0E1 /* TKStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKStorageManager.h; sourceTree = "<group>"; };
+		447519B420F5C73C00B4F0E1 /* TKStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKStorageManager.m; sourceTree = "<group>"; };
+		447519B920F5C76800B4F0E1 /* TKNetworkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKNetworkModel.h; sourceTree = "<group>"; };
+		447519BA20F5C76800B4F0E1 /* TKNetworkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNetworkModel.m; sourceTree = "<group>"; };
+		447519BC20F5C8C900B4F0E1 /* TKNetwrokListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKNetwrokListViewController.h; sourceTree = "<group>"; };
+		447519BD20F5C8C900B4F0E1 /* TKNetwrokListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKNetwrokListViewController.m; sourceTree = "<group>"; };
+		447519C020F5E68600B4F0E1 /* TKNetworkViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKNetworkViewCell.h; sourceTree = "<group>"; };
+		447519C120F5E68600B4F0E1 /* TKNetworkViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKNetworkViewCell.m; sourceTree = "<group>"; };
+		447519C320F6043F00B4F0E1 /* TKNetworkDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKNetworkDetailViewController.h; sourceTree = "<group>"; };
+		447519C420F6043F00B4F0E1 /* TKNetworkDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKNetworkDetailViewController.m; sourceTree = "<group>"; };
+		447519C620F6052700B4F0E1 /* TKNetworkDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKNetworkDetailViewCell.h; sourceTree = "<group>"; };
+		447519C720F6052700B4F0E1 /* TKNetworkDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKNetworkDetailViewCell.m; sourceTree = "<group>"; };
+		4479B49D20F884A700F6B4A1 /* TKNetworkDetailImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKNetworkDetailImageCell.h; sourceTree = "<group>"; };
+		4479B49E20F884A700F6B4A1 /* TKNetworkDetailImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKNetworkDetailImageCell.m; sourceTree = "<group>"; };
 		44D80BC920E5C8AF00AC681B /* TKDebugToolDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKDebugToolDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D80BCC20E5C8AF00AC681B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		44D80BCD20E5C8AF00AC681B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -81,6 +111,10 @@
 		444BF65020EC6369004DBFA0 /* TKDTCategory */ = {
 			isa = PBXGroup;
 			children = (
+				447519AA20F5C71D00B4F0E1 /* NSDate+Additions.h */,
+				447519AC20F5C71E00B4F0E1 /* NSDate+Additions.m */,
+				447519AD20F5C71E00B4F0E1 /* NSURLSessionConfiguration+TKExtention.h */,
+				447519AB20F5C71D00B4F0E1 /* NSURLSessionConfiguration+TKExtention.m */,
 				44D80BF220E5EAD800AC681B /* NSObject+Extension.h */,
 				44D80BF320E5EAD800AC681B /* NSObject+Extension.m */,
 				444BF64E20EB5FC2004DBFA0 /* UIWindow+Extension.h */,
@@ -92,6 +126,7 @@
 		444BF66B20EC9637004DBFA0 /* TKDTUI */ = {
 			isa = PBXGroup;
 			children = (
+				447519B620F5C74700B4F0E1 /* Network */,
 				444BF66C20EC96C8004DBFA0 /* Device */,
 			);
 			path = TKDTUI;
@@ -104,6 +139,49 @@
 				444BF67120EC9716004DBFA0 /* TKDTDeviceViewController.m */,
 			);
 			path = Device;
+			sourceTree = "<group>";
+		};
+		447519B620F5C74700B4F0E1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				447519BF20F5E5E200B4F0E1 /* View */,
+				447519B820F5C75A00B4F0E1 /* Model */,
+				447519B720F5C75300B4F0E1 /* Controller */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		447519B720F5C75300B4F0E1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				447519BC20F5C8C900B4F0E1 /* TKNetwrokListViewController.h */,
+				447519BD20F5C8C900B4F0E1 /* TKNetwrokListViewController.m */,
+				447519C320F6043F00B4F0E1 /* TKNetworkDetailViewController.h */,
+				447519C420F6043F00B4F0E1 /* TKNetworkDetailViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		447519B820F5C75A00B4F0E1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				447519B920F5C76800B4F0E1 /* TKNetworkModel.h */,
+				447519BA20F5C76800B4F0E1 /* TKNetworkModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		447519BF20F5E5E200B4F0E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				447519C020F5E68600B4F0E1 /* TKNetworkViewCell.h */,
+				447519C120F5E68600B4F0E1 /* TKNetworkViewCell.m */,
+				447519C620F6052700B4F0E1 /* TKNetworkDetailViewCell.h */,
+				447519C720F6052700B4F0E1 /* TKNetworkDetailViewCell.m */,
+				4479B49D20F884A700F6B4A1 /* TKNetworkDetailImageCell.h */,
+				4479B49E20F884A700F6B4A1 /* TKNetworkDetailImageCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		44D80BC020E5C8AF00AC681B = {
@@ -157,7 +235,11 @@
 			children = (
 				44D80BE420E5C92D00AC681B /* TKDebugTool.h */,
 				44D80BE520E5C92D00AC681B /* TKDebugTool.m */,
+				447519B020F5C72D00B4F0E1 /* TKCustomURLProtocol.h */,
+				447519B120F5C72D00B4F0E1 /* TKCustomURLProtocol.m */,
 				44D80BE720E5C99C00AC681B /* TKDebugToolMacro.h */,
+				447519B320F5C73C00B4F0E1 /* TKStorageManager.h */,
+				447519B420F5C73C00B4F0E1 /* TKStorageManager.m */,
 			);
 			path = DebugTool;
 			sourceTree = "<group>";
@@ -196,6 +278,7 @@
 				44D80BC520E5C8AF00AC681B /* Sources */,
 				44D80BC620E5C8AF00AC681B /* Frameworks */,
 				44D80BC720E5C8AF00AC681B /* Resources */,
+				9F974B6BD264B87706172532 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -270,6 +353,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9F974B6BD264B87706172532 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TKDebugToolDemo/Pods-TKDebugToolDemo-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TKDebugToolDemo/Pods-TKDebugToolDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -278,15 +379,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				444BF67220EC9716004DBFA0 /* TKDTDeviceViewController.m in Sources */,
+				447519BE20F5C8C900B4F0E1 /* TKNetwrokListViewController.m in Sources */,
+				447519B220F5C72D00B4F0E1 /* TKCustomURLProtocol.m in Sources */,
+				447519C820F6052700B4F0E1 /* TKNetworkDetailViewCell.m in Sources */,
 				44D80BE620E5C92E00AC681B /* TKDebugTool.m in Sources */,
+				447519C220F5E68600B4F0E1 /* TKNetworkViewCell.m in Sources */,
 				444BF64F20EB5FC3004DBFA0 /* UIWindow+Extension.m in Sources */,
 				44D80BD120E5C8AF00AC681B /* ViewController.m in Sources */,
+				447519BB20F5C76800B4F0E1 /* TKNetworkModel.m in Sources */,
 				44D80BDC20E5C8B000AC681B /* main.m in Sources */,
+				4479B49F20F884A700F6B4A1 /* TKNetworkDetailImageCell.m in Sources */,
 				44D80BEE20E5E8F200AC681B /* TKWindowViewController.m in Sources */,
 				444BF64120EB0B54004DBFA0 /* TKTimer.m in Sources */,
+				447519C520F6043F00B4F0E1 /* TKNetworkDetailViewController.m in Sources */,
 				44D80BCE20E5C8AF00AC681B /* AppDelegate.m in Sources */,
 				444BF63E20EA40EA004DBFA0 /* TKProxy.m in Sources */,
 				44D80BF420E5EAD800AC681B /* NSObject+Extension.m in Sources */,
+				447519AE20F5C71F00B4F0E1 /* NSURLSessionConfiguration+TKExtention.m in Sources */,
+				447519B520F5C73C00B4F0E1 /* TKStorageManager.m in Sources */,
+				447519AF20F5C71F00B4F0E1 /* NSDate+Additions.m in Sources */,
 				44D80BEB20E5CEBB00AC681B /* TKWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

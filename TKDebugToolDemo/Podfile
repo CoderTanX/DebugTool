@@ -8,4 +8,8 @@ target 'TKDebugToolDemo' do
   # Pods for TKDebugToolDemo
   pod "Masonry"
   pod "FLEX"
+  pod "MJExtension"
+  pod "MJRefresh"
+  pod "FMDB"
+  pod "SDWebImage"
 end

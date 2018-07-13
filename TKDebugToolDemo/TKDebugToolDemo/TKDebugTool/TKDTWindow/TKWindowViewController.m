@@ -14,6 +14,8 @@
 #import "TKTimer.h"
 #import "FLEX.h"
 #import "TKDTDeviceViewController.h"
+#import "TKNetwrokListViewController.h"
+#import "TKNetworkDetailViewController.h"
 #import "UIWindow+Extension.h"
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 #define SubButtonsCount self.funcNames.count
@@ -35,6 +37,7 @@
 @property (nonatomic, strong) NSArray<UIColor *> *expandBtnClolors;
 @property (nonatomic, strong) NSMutableArray<NSValue *> *endCenters;
 @property (nonatomic, strong) NSArray<NSString *> *funcNames;
+@property (nonatomic, strong) NSArray<Class> *expandVcs;
 @end
 
 @implementation TKWindowViewController
@@ -56,6 +59,13 @@
         _funcNames = @[@"Device", @"Network", @"Crash", @"Sandbox", @"FLEX", @"UI"];
     }
     return _funcNames;
+}
+
+-(NSArray<Class> *)expandVcs{
+    if (!_expandVcs){
+        _expandVcs = @[[TKDTDeviceViewController class], [TKNetwrokListViewController class], [TKNetworkDetailViewController class]];
+    }
+    return _expandVcs;
 }
 
 - (void)viewDidLoad {
@@ -147,6 +157,7 @@
     [sBallView addSubview:fpsLabel];
     self.fpsLabel = fpsLabel;
 }
+//点击了展开后的按钮
 - (void)expandBtnClick:(UIButton *)btn{
     [self clickSBallView];
     if ([btn.titleLabel.text isEqualToString:@"FLEX"]) {
@@ -155,15 +166,18 @@
     }
     
     UIViewController *currentVc = [[UIApplication sharedApplication].keyWindow currentViewController];
-    if ([currentVc isMemberOfClass:[TKDTDeviceViewController class]]) {
+    //如果还是点击了展开的按钮就返回
+    if ([self.expandVcs containsObject:[currentVc class]]) {
         return;
     }
-    
-    UIViewController *topMostVc = [[UIApplication sharedApplication].keyWindow topMostWindowController];
     if ([btn.titleLabel.text isEqualToString:@"Device"]){
         TKDTDeviceViewController *deviceVc = [[TKDTDeviceViewController alloc] init];
         UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:deviceVc];
-        [topMostVc presentViewController:navVc animated:YES completion:nil];
+        [currentVc presentViewController:navVc animated:YES completion:nil];
+    }else if ([btn.titleLabel.text isEqualToString:@"Network"]){
+        TKNetwrokListViewController *networkVc = [[TKNetwrokListViewController alloc] init];
+        UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:networkVc];
+        [currentVc presentViewController:navVc animated:YES completion:nil];
     }
     
 }
