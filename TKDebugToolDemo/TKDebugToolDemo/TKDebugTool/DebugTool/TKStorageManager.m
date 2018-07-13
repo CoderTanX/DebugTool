@@ -15,6 +15,7 @@ static NSString *const kScreateTKNetworkTabelsql = @"CREATE TABLE if NOT EXISTS 
 static NSString *const TKNetworkTabel = @"TKNetworkTabel";
 
 @interface TKStorageManager()
+@property (nonatomic, strong) FMDatabaseQueue *queue;
 @end
 @implementation TKStorageManager
 
@@ -29,10 +30,10 @@ TK_SINGLETON_IMP(TKStorageManager)
 }
 
 - (BOOL)initDataBase{
-    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[self getTKDebugDBFilePath]];
+    _queue = [FMDatabaseQueue databaseQueueWithPath:[self getTKDebugDBFilePath]];
     __block BOOL ret = NO;
     //创建表
-    [queue inDatabase:^(FMDatabase * _Nonnull db) {
+    [_queue inDatabase:^(FMDatabase * _Nonnull db) {
         ret = [db executeUpdate: kScreateTKNetworkTabelsql];
     }];
     return ret;
@@ -55,7 +56,7 @@ TK_SINGLETON_IMP(TKStorageManager)
 - (void)saveNetworkModel:(TKNetworkModel *)model{
     
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[self getTKDebugDBFilePath]];
-    [queue inDatabase:^(FMDatabase * _Nonnull db) {
+    [_queue inDatabase:^(FMDatabase * _Nonnull db) {
         NSLog(@"%@", [NSThread currentThread]);
         BOOL ret = [db executeUpdate:@"insert into TKNetworkTabel (url, method, mimeType, statusCode, responseBody, requestBody, headerFields, errorDes, startDate, totalDuration, isImage) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", model.url, model.method, model.mimeType, model.statusCode, model.responseBody, model.requestBody, model.headerFields, model.errorDes, model.startDate, model.totalDuration, @(model.isImage)];
         if (!ret) NSLog(@"TKNetworkModel插入失败");
@@ -76,8 +77,8 @@ TK_SINGLETON_IMP(TKStorageManager)
         sql = [NSString stringWithFormat:@"select *from %@ where id < %ld ORDER BY id DESC limit %ld;", TKNetworkTabel, ID, length];
     }
 
-    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[self getTKDebugDBFilePath]];
-    [queue inDatabase:^(FMDatabase * _Nonnull db) {
+//    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[self getTKDebugDBFilePath]];
+    [_queue inDatabase:^(FMDatabase * _Nonnull db) {
         FMResultSet *resultSet = [db executeQuery:sql];
         while ([resultSet next]) {
             TKNetworkModel *model = [[TKNetworkModel alloc] init];

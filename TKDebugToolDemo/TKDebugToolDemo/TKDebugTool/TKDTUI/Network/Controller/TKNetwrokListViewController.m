@@ -56,7 +56,7 @@ static NSString *const kNetworkViewCellID = @"kNetworkViewCellID";
         maxID = [[self.networkModels.firstObject ID] integerValue];
     }
     NSMutableArray *tempArray = [[TKStorageManager.sharedInstance getNetworkModelsWithID:maxID isNew:YES] mutableCopy];
-    if (tempArray.count < pageSize){
+    if (tempArray.count < pageSize && maxID == 0){
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     self.networkModels = [[tempArray arrayByAddingObjectsFromArray:self.networkModels] mutableCopy];
@@ -64,13 +64,12 @@ static NSString *const kNetworkViewCellID = @"kNetworkViewCellID";
 }
 
 - (void)getMoreData{
-    if(self.networkModels.count == 0){
-        return;
-    }
     NSInteger minID = [[self.networkModels.lastObject ID] integerValue];
     NSArray *tempArray = [TKStorageManager.sharedInstance getNetworkModelsWithID:minID isNew:NO];
     if (tempArray.count < pageSize){
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    }else{
+         [self.tableView.mj_footer endRefreshing];
     }
     [self.networkModels addObjectsFromArray:tempArray];
     [self.tableView reloadData];

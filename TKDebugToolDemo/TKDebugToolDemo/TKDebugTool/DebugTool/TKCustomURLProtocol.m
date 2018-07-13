@@ -53,7 +53,7 @@ static  NSString *const identifier = @"TKCustomURLProtocolIdentifier";
     NSMutableURLRequest *mRequest = [self.request mutableCopy];
     [self.class setProperty:@(YES) forKey:identifier inRequest:mRequest];
     //开始时间
-    self.startDate = [NSDate systemTime];
+    self.startDate = [NSDate date];
     //开始请求
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     self.dataTask = [session dataTaskWithRequest:mRequest];
@@ -78,7 +78,7 @@ static  NSString *const identifier = @"TKCustomURLProtocolIdentifier";
     model.headerFields = [self.request.allHTTPHeaderFields mj_JSONString] ? : @"";
     model.errorDes = self.error.description ? : @"";
     model.startDate = [self.startDate stringWithFormat:@"yyyy-MM-dd HH:mm:ss"] ? : @"";
-    model.totalDuration = [NSString stringWithFormat:@"%lfs", [[NSDate systemTime] timeIntervalSinceDate:self.startDate]] ? : @"";
+    model.totalDuration = [NSString stringWithFormat:@"%lfs", [[NSDate date] timeIntervalSinceDate:self.startDate]] ? : @"";
     if (self.response.MIMEType) {
         model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
     }
