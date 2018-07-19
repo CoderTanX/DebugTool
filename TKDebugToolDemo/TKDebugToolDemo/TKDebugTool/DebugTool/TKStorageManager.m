@@ -9,10 +9,12 @@
 #import "TKStorageManager.h"
 #import "TKNetworkModel.h"
 #import "FMDB.h"
+#import "TKCrashModel.h"
 
-static NSString *const kScreateTKNetworkTabelsql = @"CREATE TABLE if NOT EXISTS TKNetworkTabel(id integer PRIMARY KEY AUTOINCREMENT NOT NULL, url text, method VARCHAR(16), mimeType VARCHAR(128), statusCode VARCHAR(8), responseBody text, requestBody text, headerFields text, errorDes text, startDate VARCHAR(16), totalDuration VARCHAR(16), isImage TINYINT);";
-
+static NSString *const kCreateTKNetworkTabelSql = @"CREATE TABLE if NOT EXISTS TKNetworkTabel(id integer PRIMARY KEY AUTOINCREMENT NOT NULL, url text, method VARCHAR(16), mimeType VARCHAR(128), statusCode VARCHAR(8), responseBody text, requestBody text, headerFields text, errorDes text, startDate VARCHAR(16), totalDuration VARCHAR(16), isImage TINYINT);";
+static NSString *const kCreateTKCrashTabelSql = @"create table if not EXISTS TKCrashTabel(id integer PRIMARY KEY AUTOINCREMENT NOT NULL, name text not null, reason text not null, callStackSymbols text not null, date text not null);";
 static NSString *const TKNetworkTabel = @"TKNetworkTabel";
+static NSString *const TKCrashTabel = @"TKCrashTabel";
 
 @interface TKStorageManager()
 @property (nonatomic, strong) FMDatabaseQueue *queue;
@@ -25,18 +27,21 @@ TK_SINGLETON_IMP(TKStorageManager)
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         BOOL ret = [TKStorageManager.sharedInstance initDataBase];
-        if (!ret) NSLog(@"数据库创建失败");
+        if (!ret) NSLog(@"数据库创建发生错误");
     });
 }
 
 - (BOOL)initDataBase{
     _queue = [FMDatabaseQueue databaseQueueWithPath:[self getTKDebugDBFilePath]];
-    __block BOOL ret = NO;
+    __block BOOL ret1 = NO;
+    __block BOOL ret2 = NO;
     //创建表
     [_queue inDatabase:^(FMDatabase * _Nonnull db) {
-        ret = [db executeUpdate: kScreateTKNetworkTabelsql];
+        ret1 = [db executeUpdate: kCreateTKNetworkTabelSql];
+        ret2 = [db executeUpdate: kCreateTKCrashTabelSql];
     }];
-    return ret;
+    
+    return ret1 & ret2;
 }
 
 - (NSString *)getTKDebugDBFilePath{
@@ -55,9 +60,7 @@ TK_SINGLETON_IMP(TKStorageManager)
 
 - (void)saveNetworkModel:(TKNetworkModel *)model{
     
-    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[self getTKDebugDBFilePath]];
     [_queue inDatabase:^(FMDatabase * _Nonnull db) {
-        NSLog(@"%@", [NSThread currentThread]);
         BOOL ret = [db executeUpdate:@"insert into TKNetworkTabel (url, method, mimeType, statusCode, responseBody, requestBody, headerFields, errorDes, startDate, totalDuration, isImage) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", model.url, model.method, model.mimeType, model.statusCode, model.responseBody, model.requestBody, model.headerFields, model.errorDes, model.startDate, model.totalDuration, @(model.isImage)];
         if (!ret) NSLog(@"TKNetworkModel插入失败");
     }];
@@ -77,7 +80,6 @@ TK_SINGLETON_IMP(TKStorageManager)
         sql = [NSString stringWithFormat:@"select *from %@ where id < %ld ORDER BY id DESC limit %ld;", TKNetworkTabel, ID, length];
     }
 
-//    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[self getTKDebugDBFilePath]];
     [_queue inDatabase:^(FMDatabase * _Nonnull db) {
         FMResultSet *resultSet = [db executeQuery:sql];
         while ([resultSet next]) {
@@ -100,6 +102,29 @@ TK_SINGLETON_IMP(TKStorageManager)
     return [tempArray copy];
 }
 
+- (void)saveCrashModel:(TKCrashModel *)model{
+    [_queue inDatabase:^(FMDatabase * _Nonnull db) {
+        BOOL ret = [db executeUpdate:@"insert into TKCrashTabel (name, reason, callStackSymbols, date) values(?, ?, ?, ?);", model.name, model.reason, model.callStackSymbols, model.date];
+        if (!ret) NSLog(@"TKCrashModel插入失败");
+    }];
+}
+
+- (NSArray<TKCrashModel *> *)getAllCrashModel{
+    NSString *sql = [NSString stringWithFormat:@"select *from %@ order by id desc limit 10", TKCrashTabel];
+    NSMutableArray *tempArray = [NSMutableArray array];
+    [_queue inDatabase:^(FMDatabase * _Nonnull db) {
+        FMResultSet *resultSet = [db executeQuery:sql];
+        while ([resultSet next]) {
+            TKCrashModel *model = [[TKCrashModel alloc] init];
+            model.name = [resultSet stringForColumn:@"name"];
+            model.reason = [resultSet stringForColumn:@"reason"];
+            model.callStackSymbols = [resultSet stringForColumn:@"callStackSymbols"];
+            model.date = [resultSet stringForColumn:@"date"];
+            [tempArray addObject:model];
+        }
+    }];
+    return [tempArray copy];
+}
 
 
 @end

@@ -1,25 +1,26 @@
 //
-//  TKCustomURLProtocol.m
+//  TKDTCustomURLProtocol.m
 //  CustomProtocolDemo
 //
 //  Created by usee on 2018/7/6.
 //  Copyright © 2018年 tax. All rights reserved.
 //
 
-#import "TKCustomURLProtocol.h"
+#import "TKDTCustomURLProtocol.h"
 #import "TKNetworkModel.h"
 #import "MJExtension.h"
 #import "NSDate+Additions.h"
 #import "TKStorageManager.h"
-static  NSString *const identifier = @"TKCustomURLProtocolIdentifier";
-@interface TKCustomURLProtocol() <NSURLSessionDataDelegate>
+#import "TKDebugTool.h"
+static  NSString *const identifier = @"TKDTCustomURLProtocolIdentifier";
+@interface TKDTCustomURLProtocol() <NSURLSessionDataDelegate>
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, strong) NSMutableData *data;
 @property (nonatomic, strong) NSURLResponse *response;
 @property (nonatomic, strong) NSDate *startDate;
 @end
-@implementation TKCustomURLProtocol
+@implementation TKDTCustomURLProtocol
 
 - (NSMutableData *)data{
     if (!_data) {
@@ -29,18 +30,27 @@ static  NSString *const identifier = @"TKCustomURLProtocolIdentifier";
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request{
+    
+    if (!TKDebugTool.sharedInstance.isMonitoring) {
+        return NO;
+    }
+    //只监听http和https请求
+    if (![request.URL.scheme isEqualToString:@"http"] &&
+        ![request.URL.scheme isEqualToString:@"https"]) {
+        return NO;
+    }
+    
     //根据这个标识，防止重复调用。
     if ([self propertyForKey:identifier inRequest:request]) {
         return NO;
     }
-    NSString *scheme = [[request URL] scheme];
-    //只监听http和https请求
-    if ([scheme caseInsensitiveCompare:@"http"] == NSOrderedSame ||
-        [scheme caseInsensitiveCompare:@"https"] == NSOrderedSame) {
-        return YES;
+    
+    for (NSString *url in [TKDebugTool sharedInstance].ignorePaths) {
+        if ([request.URL.absoluteString rangeOfString:url].location != NSNotFound)
+            return NO;
     }
     
-    return NO;
+    return YES;
 }
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request{
@@ -65,7 +75,6 @@ static  NSString *const identifier = @"TKCustomURLProtocolIdentifier";
     //取消dataTask
     [self.dataTask cancel];
     self.dataTask = nil;
-    NSLog(@"%s", __func__);
     //给模型赋值
     TKNetworkModel *model = [[TKNetworkModel alloc] init];
     model.url = self.request.URL.absoluteString ? : @"";
@@ -74,7 +83,13 @@ static  NSString *const identifier = @"TKCustomURLProtocolIdentifier";
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)self.response;
     model.statusCode = [NSString stringWithFormat:@"%ld", httpResponse.statusCode] ? : @"";
     model.responseBody = [self.data mj_JSONString] ? : @"";
-    model.requestBody = [self.request.HTTPBody mj_JSONString] ? : @"";
+    if (self.request.HTTPBody) {
+        model.requestBody = [self.request.HTTPBody mj_JSONString] ? : @"";
+    }else if (self.request.HTTPBodyStream){
+        model.requestBody = [self strFromInputStream:self.request.HTTPBodyStream] ? : @"";
+    }else{
+        model.requestBody = @"";
+    }
     model.headerFields = [self.request.allHTTPHeaderFields mj_JSONString] ? : @"";
     model.errorDes = self.error.description ? : @"";
     model.startDate = [self.startDate stringWithFormat:@"yyyy-MM-dd HH:mm:ss"] ? : @"";
@@ -137,8 +152,24 @@ didReceiveResponse:(NSURLResponse *)response
     [self.client URLProtocol:self didLoadData:data];
 }
 
-- (void)dealloc{
-    NSLog(@"%s", __func__);
+/**
+ 将数据流转化为字符串
+ */
+- (NSString *)strFromInputStream:(NSInputStream *)stream{
+    NSMutableData *data = [[NSMutableData alloc] init];
+    if (stream.streamStatus != NSStreamStatusOpen) {
+        [stream open];
+    }
+    NSInteger readLength;
+    uint8_t buffer[1024];
+    
+    while ((readLength = [stream read:buffer maxLength:1024]) > 0) {
+        [data appendBytes:buffer length:readLength];
+    }
+    
+    return [data mj_JSONString];
+    
 }
+
 
 @end

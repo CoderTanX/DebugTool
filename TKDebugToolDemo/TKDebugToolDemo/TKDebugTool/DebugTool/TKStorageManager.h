@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TKDebugToolMacro.h"
 
-@class TKNetworkModel;
+@class TKNetworkModel, TKCrashModel;
 @interface TKStorageManager : NSObject
 
 TK_SINGLETON_DEF(TKStorageManager)
@@ -17,5 +17,9 @@ TK_SINGLETON_DEF(TKStorageManager)
 - (void)saveNetworkModel:(TKNetworkModel *)model;
 
 - (NSArray<TKNetworkModel*>*)getNetworkModelsWithID:(NSInteger)ID isNew:(BOOL)isNew;
+
+- (void)saveCrashModel:(TKCrashModel *)model;
+
+- (NSArray<TKCrashModel *> *)getAllCrashModel;
 
 @end

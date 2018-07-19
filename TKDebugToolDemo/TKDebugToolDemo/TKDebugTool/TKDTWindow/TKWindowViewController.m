@@ -16,7 +16,9 @@
 #import "TKDTDeviceViewController.h"
 #import "TKNetwrokListViewController.h"
 #import "TKNetworkDetailViewController.h"
+#import "TKCrashListViewController.h"
 #import "UIWindow+Extension.h"
+#import "YYViewHierarchy3D.h"
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 #define SubButtonsCount self.funcNames.count
 #define SubButtonMargin 8
@@ -56,14 +58,14 @@
 
 - (NSArray<NSString *> *)funcNames{
     if (!_funcNames) {
-        _funcNames = @[@"Device", @"Network", @"Crash", @"Sandbox", @"FLEX", @"UI"];
+        _funcNames = @[@"Device", @"Network", @"Crash", @"Layer", @"FLEX", @"UI"];
     }
     return _funcNames;
 }
 
 -(NSArray<Class> *)expandVcs{
     if (!_expandVcs){
-        _expandVcs = @[[TKDTDeviceViewController class], [TKNetwrokListViewController class], [TKNetworkDetailViewController class]];
+        _expandVcs = @[[TKDTDeviceViewController class], [TKNetwrokListViewController class], [TKNetworkDetailViewController class], [TKCrashListViewController class]];
     }
     return _expandVcs;
 }
@@ -178,6 +180,12 @@
         TKNetwrokListViewController *networkVc = [[TKNetwrokListViewController alloc] init];
         UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:networkVc];
         [currentVc presentViewController:navVc animated:YES completion:nil];
+    }else if ([btn.titleLabel.text isEqualToString:@"Crash"]){
+        TKCrashListViewController *crashVc = [[TKCrashListViewController alloc] init];
+        UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:crashVc];
+        [currentVc presentViewController:navVc animated:YES completion:nil];
+    }else if ([btn.titleLabel.text isEqualToString:@"Layer"]){
+        [[YYViewHierarchy3D sharedInstance] performSelector:@selector(toggleShow)];
     }
     
 }

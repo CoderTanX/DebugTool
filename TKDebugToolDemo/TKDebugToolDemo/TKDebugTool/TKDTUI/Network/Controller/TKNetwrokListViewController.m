@@ -34,7 +34,8 @@ static NSString *const kNetworkViewCellID = @"kNetworkViewCellID";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(leftBtnClick)];
     [self.tableView registerClass:[TKNetworkViewCell class] forCellReuseIdentifier:kNetworkViewCellID];
     self.tableView.tableFooterView = [UIView new];
-    self.tableView.rowHeight = 70;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 70;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

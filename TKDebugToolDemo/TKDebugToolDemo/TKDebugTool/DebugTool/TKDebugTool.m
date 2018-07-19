@@ -8,7 +8,8 @@
 
 #import "TKDebugTool.h"
 #import "TKWindow.h"
-#import "TKCustomURLProtocol.h"
+#import "TKDTCustomURLProtocol.h"
+#import "TKCrashHelper.h"
 
 @interface TKDebugTool()
 @property (nonatomic, strong)TKWindow *window;
@@ -18,17 +19,32 @@
 
 TK_SINGLETON_IMP(TKDebugTool)
 
+- (NSMutableArray *)ignorePaths{
+    if (!_ignorePaths) {
+        _ignorePaths = [[NSMutableArray alloc] initWithObjects:@"msg/hasMsg",@"/expressNews/list", nil];
+    }
+    return _ignorePaths;
+}
+
 - (void)start{
+    
     TKDebugTool.sharedInstance.window = [[TKWindow alloc] initWithFrame:CGRectMake(100, 300, BALLW, BALLW)];
-    [NSURLProtocol registerClass:[TKCustomURLProtocol class]];
+    //注册URL监听
+    [NSURLProtocol registerClass:[TKDTCustomURLProtocol class]];
+    //注册捕获异常
+    [TKCrashHelper registerCatchCrash];
 }
 
 - (void)stop{
     self.window = nil;
-    [NSURLProtocol unregisterClass:[TKCustomURLProtocol class]];
+    //注销URL监听
+    [NSURLProtocol unregisterClass:[TKDTCustomURLProtocol class]];
+    //注销捕获异常
+    [TKCrashHelper unregisterCatchCrash];
+    
 }
 
-- (BOOL)isMonitor{
+- (BOOL)isMonitoring{
     return self.window != nil;
     
 }

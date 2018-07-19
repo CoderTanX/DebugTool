@@ -8,7 +8,7 @@
 
 #import "NSURLSessionConfiguration+TKExtention.h"
 #import <objc/runtime.h>
-#import "TKCustomURLProtocol.h"
+#import "TKDTCustomURLProtocol.h"
 @implementation NSURLSessionConfiguration (TKExtention)
 
 + (void)load{
@@ -25,8 +25,8 @@
 + (NSURLSessionConfiguration *)tk_defaultSessionConfiguration{
     NSURLSessionConfiguration *config = [self tk_defaultSessionConfiguration];
     NSMutableArray *protocols = [config.protocolClasses mutableCopy];
-    if (![protocols containsObject:[TKCustomURLProtocol class]]){
-        [protocols insertObject:[TKCustomURLProtocol class] atIndex:0];
+    if (![protocols containsObject:[TKDTCustomURLProtocol class]]){
+        [protocols insertObject:[TKDTCustomURLProtocol class] atIndex:0];
     }
     config.protocolClasses = protocols;
     return config;
@@ -35,8 +35,8 @@
 + (NSURLSessionConfiguration *)tk_ephemeralSessionConfiguration{
     NSURLSessionConfiguration *config = [self tk_ephemeralSessionConfiguration];
     NSMutableArray *protocols = [config.protocolClasses mutableCopy];
-    if (![protocols containsObject:[TKCustomURLProtocol class]]){
-        [protocols insertObject:[TKCustomURLProtocol class] atIndex:0];
+    if (![protocols containsObject:[TKDTCustomURLProtocol class]]){
+        [protocols insertObject:[TKDTCustomURLProtocol class] atIndex:0];
     }
     config.protocolClasses = protocols;
     return config;

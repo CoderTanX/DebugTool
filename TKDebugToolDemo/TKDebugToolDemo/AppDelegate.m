@@ -16,7 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[TKDebugTool sharedInstance] start];
+//    [[TKDebugTool sharedInstance] start];
     return YES;
 }
 

@@ -12,9 +12,13 @@
 //单例
 TK_SINGLETON_DEF(TKDebugTool)
 ////是否已经开始
-@property(nonatomic, assign, readonly, getter=isMonitor) BOOL monitor;
+@property(nonatomic, assign, readonly, getter=isMonitoring) BOOL monitoring;
 
 - (void)start;
 
 - (void)stop;
+
+//忽略监听的url
+@property (nonatomic, strong) NSMutableArray *ignorePaths;
+
 @end

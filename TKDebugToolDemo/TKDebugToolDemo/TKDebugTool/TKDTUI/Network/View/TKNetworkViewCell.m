@@ -30,10 +30,13 @@
     self.pathLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.pathLabel.font = [UIFont systemFontOfSize:13];
     self.pathLabel.textColor = [UIColor blackColor];
+    self.pathLabel.numberOfLines = 0;
     [self.contentView addSubview:self.pathLabel];
     [self.pathLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.baseURLLabel.mas_bottom).offset(15);
         make.bottom.mas_equalTo(-10);
         make.left.mas_equalTo(10);
+        make.right.mas_equalTo(-10);
     }];
 
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];

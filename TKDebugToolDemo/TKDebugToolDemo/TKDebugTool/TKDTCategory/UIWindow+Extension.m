@@ -16,7 +16,7 @@
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(nullable UIEvent *)event{
-    TKDebugTool.sharedInstance.isMonitor ? [TKDebugTool.sharedInstance stop] : [TKDebugTool.sharedInstance start];
+    TKDebugTool.sharedInstance.isMonitoring ? [TKDebugTool.sharedInstance stop] : [TKDebugTool.sharedInstance start];
 }
 
 - (UIViewController*)topMostWindowController

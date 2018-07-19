@@ -1,5 +1,5 @@
 //
-//  TKCustomURLProtocol.h
+//  TKDTCustomURLProtocol.h
 //  CustomProtocolDemo
 //
 //  Created by usee on 2018/7/6.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKCustomURLProtocol : NSURLProtocol
+@interface TKDTCustomURLProtocol : NSURLProtocol
 
 
 
